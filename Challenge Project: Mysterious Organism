@@ -1,0 +1,65 @@
+// Returns a random DNA base
+const returnRandBase = () => {
+  const dnaBases = ['A', 'T', 'C', 'G']
+  return dnaBases[Math.floor(Math.random() * 4)] 
+}
+
+// Returns a random single strand of DNA containing 15 bases
+const mockUpStrand = () => {
+  const newStrand = []
+  for (let i = 0; i < 15; i++) {
+    newStrand.push(returnRandBase())
+  }
+  return newStrand
+}
+
+const pAequorFactory = (num, arr) =>{
+   
+  return{
+    specimenNum: num,
+    dna: arr,
+    mutate(){
+    let base=returnRandBase();
+    while(arr[0]==base){
+      base=returnRandBase();
+    }
+    return base;
+  },
+    compareDNA(obj){
+     let pp=0;
+      for(let i=0;i<this.dna.length;i++){
+        if(this.dna[i]==obj.dna[i]){
+          pp+=(1/this.dna.length);
+        }
+      }
+      console.log(`specimen #1 and specimen #2 have ${pp*100}% DNA in common`);
+    },
+    willLikelySurvive(){
+      let re=0;
+      for(let i=0;i<this.dna.length;i++){
+        if(this.dna[i]=='C'||this.dna[i]=='G'){
+          re+=(1/this.dna.length);
+        }
+      }
+      console.log(`Percentage of C and G gene is ${re*100}%`);
+      if(re>=.6){return true}else{return false};
+    }
+  }
+  
+}
+
+let a = pAequorFactory(1,[
+  'A', 'C', 'C', 'G'
+]);
+let b=pAequorFactory(2,[
+  'C', 'A', 'T', 'G'
+]);
+a.compareDNA(b);
+console.log(a.willLikelySurvive())
+let fin=[];
+for(let i=0;i<30;i++){
+  let pseudo=mockUpStrand();
+  //console.log(pseudo);
+  fin.push(pAequorFactory(i,pseudo))
+}
+console.log(fin)
