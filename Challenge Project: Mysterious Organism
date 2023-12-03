@@ -20,7 +20,7 @@ const pAequorFactory = (num, arr) =>{
     dna: arr,
     mutate(){
     let base=returnRandBase();
-    while(arr[0]==base){
+    while(this.dna[0]==base){
       base=returnRandBase();
     }
     this.dna[0]=base;
