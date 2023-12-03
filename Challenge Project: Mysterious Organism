@@ -71,3 +71,7 @@ fin[0].compareDNA(fin[1]);
 console.log(fin[0].willLikelySurvive());
 //console.log(a.mutate());
 
+
+
+
+
