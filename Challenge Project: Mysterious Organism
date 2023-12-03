@@ -23,7 +23,8 @@ const pAequorFactory = (num, arr) =>{
     while(arr[0]==base){
       base=returnRandBase();
     }
-    return base;
+    this.dna[0]=base;
+    
   },
     compareDNA(obj){
      let pp=0;
@@ -47,7 +48,7 @@ const pAequorFactory = (num, arr) =>{
   }
   
 }
-
+/*
 let a = pAequorFactory(1,[
   'A', 'C', 'C', 'G'
 ]);
@@ -56,10 +57,17 @@ let b=pAequorFactory(2,[
 ]);
 a.compareDNA(b);
 console.log(a.willLikelySurvive())
+*/
 let fin=[];
 for(let i=0;i<30;i++){
   let pseudo=mockUpStrand();
   //console.log(pseudo);
   fin.push(pAequorFactory(i,pseudo))
 }
-console.log(fin)
+console.log(fin[0])
+fin[0].mutate();
+console.log(fin[0])
+fin[0].compareDNA(fin[1]);
+console.log(fin[0].willLikelySurvive());
+//console.log(a.mutate());
+
