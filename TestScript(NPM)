@@ -1,0 +1,49 @@
+const assert= require('assert');
+const Rooster=require('../index');
+describe('Rooster', ()=>{
+  describe('.announceDawn', ()=>{
+    it('returns a rooster call', ()=>{
+      //setup
+      const sound='moo!';
+      const expected='moo!'
+      //exercise
+      const result=Rooster.announceDawn();
+      //verify
+      assert.equal(result, expected);
+    })
+  });
+  describe('.timeAtDawn', (hour)=>{
+    it('returns its argument as a string', ()=>{
+      const hour=12;
+      const expectResult='12';
+      const result=Rooster.timeAtDawn(hour);
+   
+      assert.strictEqual(expectResult, result);
+
+    });
+    it('throws an error if passed a number less than 0',()=>{
+      const hour=-1;
+      const expectedResult=RangeError;
+      assert.throws(()=>{
+        Rooster.timeAtDawn(hour);
+      }, RangeError)
+    });
+    it('throws an error if passed a number greater than 23', ()=>{
+      const hour=254;
+      const expectedResult=RangeError;
+      assert.throws(()=>{
+        Rooster.timeAtDawn(hour);
+      },
+      RangeError);
+    })
+
+  })
+});
+/*Rooster.timeAtDawn = (hour) => {
+  if (hour < 0 || hour > 23) {
+    throw new RangeError;
+  } else {
+    return hour.toString();
+  };
+}
+ */
