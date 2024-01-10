@@ -1,0 +1,41 @@
+//file one 
+const Calculate = {
+  factorial(num){
+    let sum=1;
+    for(let i=num;i>0;i--){
+      sum*=i;
+    }
+    return sum;
+  }
+}
+
+module.exports = Calculate;
+
+
+
+//test file 2
+var assert = require("assert");
+var Calculate =  require('../index.js')
+
+describe('Calculate', () => {
+  describe('.factorial', () => {
+    it('test if the output of 5! is equal to 120',()=>{
+      const targetV=5;
+      const exptedR=120;
+      const result=Calculate.factorial(targetV);
+      assert.equal(result, exptedR);
+    });
+     it('test if the output of 3! is equal to 6',()=>{
+      const targetV=3;
+      const exptedR=6;
+      const result=Calculate.factorial(targetV);
+      assert.equal(result, exptedR);
+    });
+     it('Edge case 0!',()=>{
+      const targetV=0;
+      const exptedR=1;
+      const result=Calculate.factorial(targetV);
+      assert.equal(result, exptedR);
+    })
+  });
+});
